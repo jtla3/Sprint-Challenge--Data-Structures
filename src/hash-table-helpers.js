@@ -49,6 +49,35 @@ const getIndexBelowMax = (str, max) => {
   return hash % max;
 };
 
+class Linkedlist {
+  constructor(options) {
+    this.head = null;
+    this.tail = null;
+  }
+
+  addtotail(key, value) {
+    const newnode = {};
+    newnode[key] = value;
+    newnode.next = null;
+    if (!this.head) {
+      this.head = newnode;
+      this.tail = newnode;
+    } else {
+      this.tail.next = newnode;
+      this.tail = newnode;
+    }
+  }
+  removehead() {
+    if (!this.head) {
+      return null;
+    }
+    const removed = this.head;
+    this.head = this.head.next;
+    delete removed.next;
+    return removed;
+  }
+}
+
 module.exports = {
   LimitedArray,
   getIndexBelowMax,
